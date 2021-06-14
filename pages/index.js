@@ -1,6 +1,8 @@
 import Head from 'next/head'
+// eslint-disable-next-line no-unused-vars
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
+import React from 'react'
+
 
 export default function Home() {
   return (

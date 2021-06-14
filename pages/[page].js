@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 // import getData from '../utils/getData'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
+import { devices } from '../components/Global'
 
 let Container = styled.div`
 
@@ -37,8 +39,8 @@ export default Product;
 //     return {
 //         props: {
 //             data,
-//             revalidate: 1,
-//         },
+//         }, 
+//          revalidate: 1
 //     };
 // }
 
