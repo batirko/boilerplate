@@ -38,7 +38,8 @@ ${({ pb }) => pb && `padding-bottom: ${pb}`};
 ${({ pr }) => pr && `padding-right: ${pr}`};
 ${({ pl }) => pl && `padding-left: ${pl}`};
 
-background-color: ${props => props.color || "white"};
+${({ color }) => color && `background-color: ${color} `};
+
 font-size: 14px;
 @media ${devices.mobile} {
     ${({ paddingMob }) => paddingMob && `padding: ${paddingMob}`};
@@ -83,13 +84,28 @@ ${({ pr }) => pr && `padding-right: ${pr}`};
 ${({ pl }) => pl && `padding-left: ${pl}`};
 
 ${({ flex }) => flex && `display: flex`};
+
+
 @media ${devices.tablet} {
     ${({ directionMob }) => directionMob && `direction: ${directionMob}`};
+    ${({ hide }) => hide === "tablet" && `display: none`};
 }
 @media ${devices.mobile} {
-    ${({ mobHide }) => mobHide && `display: none`};
+    ${({ hide }) => hide === "mobile" && `display: none`};
     ${({ paddingMob }) => paddingMob && `padding: ${paddingMob}`};
     ${({ marginMob }) => marginMob && `margin: ${marginMob}`};
+    ${({ alignMob }) => alignMob && `align-items: ${alignMob}`};
+    ${({ justifyMob }) => justifyMob && `justify-content: ${justifyMob}`};
+    ${({ directionMob }) => directionMob && `flex-direction: ${directionMob}`};
+}
+
+@media ${devices.small} {
+    ${({ hide }) => hide === "small" && `display: none`};
+    ${({ paddingSmall }) => paddingSmall && `padding: ${paddingSmall}`};
+    ${({ marginSmall }) => marginSmall && `margin: ${marginSmall}`};
+    ${({ alignSmall }) => alignSmall && `align-items: ${alignSmall}`};
+    ${({ justifySmall }) => justifySmall && `justify-content: ${justifySmall}`};
+    ${({ directionSmall }) => directionSmall && `flex-direction: ${directionSmall}`};
 }
 `
 
@@ -97,11 +113,11 @@ ${({ flex }) => flex && `display: flex`};
 
 //Text_ _ _ _ _ _ _ _ _ _ _
 const Text = styled(Typography)`
-font-family: 'Montserrat', 'Roboto', sans-serif; 
-color: ${props => props.color || "black"};
-text-align: ${({ align }) => align || "left"};
-font-weight: ${({ weight }) => weight || "400"};
-font-size: ${({ size }) => size || "14px"};
+font-family: 'Roboto', sans-serif; 
+${({ color }) => color && `color: ${color}`};
+${({ align }) => align && `text-align: ${align}`};
+${({ weight }) => weight && `font-weight: ${weight}`};
+${({ size }) => size && `font-size: ${size}`};
 
 ${({ margin }) => margin && `margin: ${margin}`};
 ${({ mt }) => mt && `margin-top: ${mt}`};
@@ -119,18 +135,16 @@ ${({ pl }) => pl && `padding-left: ${pl}`};
 ${({ transform }) => transform && `text-transform: ${transform}`};
 ${({ height }) => height && `line-height: ${height}`};
 @media ${devices.mobile} {
-    color: ${props => props.mobileColor || props.color || "black"};  
-    font-size: ${(props) => props.sizeMob || props.size || "11px"};
-    ${({ mobHide }) => mobHide && `display: none`};
+    ${({ colorMob }) => colorMob && `color: ${colorMob}`};
+    ${({ sizeMob }) => sizeMob && `font-size: ${sizeMob}`};
+    ${({ alignMob }) => alignMob && `text-align: ${alignMob}`};
+    ${({ heightMob }) => heightMob && `line-height: ${heightMob}`};
 }
 `
 //Title _ _ _ _ _ _ _ _ _ _
 const Title = styled(Text)`
+font-family: 'Montserrat', 'Roboto', sans-serif; 
 margin-bottom: ${props => props.mb || "1em"};
-@media ${devices.mobile} {
-    font-size: clamp(${props => props.sizeMob || "0.5em, 10vw, 1em"});
-    text-align: ${props => props.mobileAlign || "center"};
-}
 `
 
 
